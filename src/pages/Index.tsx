@@ -1,13 +1,29 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import About from '@/components/About';
+import Features from '@/components/Features';
+import Pricing from '@/components/Pricing';
+import Footer from '@/components/Footer';
+import SEOHelmet from '@/components/SEOHelmet';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <>
+      <SEOHelmet 
+        title="Track My Academy - Sports Academy Management Platform"
+        description="India's leading sports academy management platform with player tracking, performance analytics, and comprehensive academy tools."
+        keywords="sports academy management, player tracking, performance analytics, academy software India, sports management platform"
+        canonical="/"
+      />
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <Hero />
+        <About />
+        <Features />
+        <Pricing />
+        <Footer />
       </div>
-    </div>
+    </>
   );
 };
 
