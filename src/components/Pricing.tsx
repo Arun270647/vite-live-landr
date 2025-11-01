@@ -4,104 +4,114 @@ import { motion } from 'framer-motion';
 const Pricing = () => {
   const plans = [
     {
-      name: 'Starter',
-      description: 'For small academies getting started',
-      price: 'Contact us',
+      name: "Starter",
+      subtitle: "For small academies getting started",
+      price: "Contact us",
       popular: false,
       features: [
-        'Core management features',
-        'Performance tracking',
-        'Event scheduling',
-        'Email support',
-      ],
+        "Core management features",
+        "Performance tracking",
+        "Event scheduling",
+        "Email support"
+      ]
     },
     {
-      name: 'Professional',
-      description: 'For growing academies',
-      price: 'Contact us',
+      name: "Professional",
+      subtitle: "For growing academies",
+      price: "Contact us",
       popular: true,
       features: [
-        'Everything in Starter',
-        'Advanced analytics',
-        'Custom branding',
-        'Priority support',
-        'API access',
-      ],
+        "Everything in Starter",
+        "Advanced analytics",
+        "Custom branding",
+        "Priority support",
+        "API access"
+      ]
     },
     {
-      name: 'Enterprise',
-      description: 'For large organizations',
-      price: 'Contact us',
+      name: "Enterprise",
+      subtitle: "For large organizations",
+      price: "Contact us",
       popular: false,
       features: [
-        'Everything in Professional',
-        'Dedicated support',
-        'Custom integrations',
-        'SLA guarantee',
-        'On-premise option',
-      ],
-    },
+        "Everything in Professional",
+        "Dedicated support",
+        "Custom integrations",
+        "SLA guarantee",
+        "On-premise option"
+      ]
+    }
   ];
 
   return (
-    <section id="pricing" className="py-24 bg-background">
-      <div className="container mx-auto px-6">
+    <section id="pricing" className="py-32 bg-background relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-primary/10 rounded-full blur-[150px]"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
-          <p className="text-primary font-semibold mb-2 text-sm uppercase tracking-wide">🚀 Modern</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
             Simple pricing
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Choose the plan that's right for your academy
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`bg-card rounded-xl border p-8 relative ${
-                plan.popular ? 'border-primary shadow-card' : 'border-border'
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`relative bg-card border rounded-3xl p-8 transition-all ${
+                plan.popular 
+                  ? 'border-primary shadow-[0_0_50px_rgba(139,92,246,0.3)] scale-105' 
+                  : 'border-white/10 hover:border-white/20'
               }`}
             >
+              {/* Popular Badge */}
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold">
-                  Popular
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <div className="bg-primary text-white text-sm font-bold px-4 py-1 rounded-full">
+                    Popular
+                  </div>
                 </div>
               )}
-              <h3 className="text-xl font-bold text-foreground mb-2">{plan.name}</h3>
-              <p className="text-muted-foreground text-sm mb-6">{plan.description}</p>
-              <div className="mb-6">
-                <span className="text-3xl font-bold text-foreground">{plan.price}</span>
-              </div>
-              <a
-                href="#contact"
-                className={`block text-center px-6 py-2.5 rounded-lg font-medium transition-all mb-6 ${
+
+              {/* Plan Header */}
+              <div className="mb-8">
+                <h3 className="text-2xl font-black text-white mb-2">{plan.name}</h3>
+                <p className="text-gray-400 mb-6">{plan.subtitle}</p>
+                <div className="text-4xl font-black text-white mb-6">{plan.price}</div>
+                <button className={`w-full py-4 rounded-lg font-semibold transition-all hover:scale-105 ${
                   plan.popular
-                    ? 'bg-primary hover:bg-primary/90 text-primary-foreground'
-                    : 'bg-secondary hover:bg-secondary/80 text-secondary-foreground'
-                }`}
-              >
-                Get Started
-              </a>
-              <ul className="space-y-3">
+                    ? 'bg-primary text-white hover:bg-primary/90'
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                }`}>
+                  Get Started
+                </button>
+              </div>
+
+              {/* Features */}
+              <div className="space-y-4">
                 {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start">
-                    <Check className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground text-sm">{feature}</span>
-                  </li>
+                  <div key={featureIndex} className="flex items-start space-x-3">
+                    <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300">{feature}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </motion.div>
           ))}
         </div>

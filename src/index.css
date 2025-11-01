@@ -8,50 +8,99 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 240 10% 5%;
-    --foreground: 0 0% 98%;
+    --background: 222 47% 11%;
+    --foreground: 0 0% 100%;
 
-    --card: 240 8% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 217 33% 17%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 240 8% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 217 33% 17%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 262 83% 58%;
+    --primary: 263 70% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 6% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 6% 15%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 262 83% 58%;
+    --accent: 263 70% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 20%;
-    --input: 240 6% 20%;
-    --ring: 262 83% 58%;
+    --border: 217 33% 24%;
+    --input: 217 33% 24%;
+    --ring: 263 70% 50%;
 
     --radius: 0.75rem;
     
     /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(262, 83%, 58%), hsl(280, 83%, 68%));
-    --shadow-elegant: 0 10px 40px -10px hsla(262, 83%, 58%, 0.5);
-    --shadow-card: 0 4px 20px -4px hsla(262, 83%, 58%, 0.2);
+    --gradient-primary: linear-gradient(135deg, hsl(263, 70%, 50%), hsl(263, 70%, 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(222, 47%, 11%), hsl(217, 33%, 17%));
+    --shadow-elegant: 0 20px 60px -10px hsla(263, 70%, 50%, 0.5);
+    --shadow-glow: 0 0 60px hsla(263, 70%, 50%, 0.3);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 240 8% 8%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 262 83% 58%;
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 0 0% 100%;
+
+    --card: 217 33% 14%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 217 33% 14%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 263 70% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 14%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217 33% 14%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 263 70% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 263 70% 55%;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(263, 70%, 55%), hsl(263, 70%, 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(222, 47%, 8%), hsl(217, 33%, 14%));
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 6% 15%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 240 6% 20%;
-    --sidebar-ring: 262 83% 58%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -62,5 +111,37 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Wave Animation */
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+.wave-line {
+  animation: wave 8s ease-in-out infinite;
+}
+
+.wave-line:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.wave-line:nth-child(3) {
+  animation-delay: 4s;
+}
+
+/* Gradient Animation */
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
