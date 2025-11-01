@@ -1,71 +1,110 @@
-import { Target, Users, Zap, Shield } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Zap, Shield, Globe, Sparkles } from 'lucide-react';
 
 const About = () => {
-  const values = [
-    {
-      icon: Target,
-      title: 'Our Mission',
-      description: 'Empowering sports academies with cutting-edge technology to nurture the next generation of athletes.',
-    },
-    {
-      icon: Users,
-      title: 'Community First',
-      description: 'Building a supportive ecosystem for coaches, players, and administrators to thrive together.',
-    },
+  const features = [
     {
       icon: Zap,
-      title: 'Innovation',
-      description: 'Continuously evolving with the latest technology to provide the best management experience.',
+      title: 'Lightning-fast performance',
+      description: 'Optimized for speed and efficiency'
     },
     {
       icon: Shield,
-      title: 'Trust & Security',
-      description: 'Your data is protected with enterprise-grade security and privacy measures.',
+      title: 'Enterprise-grade security',
+      description: 'Your data is always protected'
     },
+    {
+      icon: Globe,
+      title: 'Access from anywhere',
+      description: 'Cloud-based platform available 24/7'
+    },
+    {
+      icon: Sparkles,
+      title: 'Easy to use interface',
+      description: 'Intuitive design for everyone'
+    }
+  ];
+
+  const capabilities = [
+    'Attendance tracking',
+    'Performance analytics',
+    'Event management',
+    'Team communication'
   ];
 
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
-            About
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              Track My Academy
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We're revolutionizing sports academy management in India with innovative technology 
-            that makes coaching, tracking, and growing your academy effortless.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {values.map((value, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 hover:shadow-xl transition-all hover:-translate-y-2 border border-gray-100"
-            >
-              <div className="w-14 h-14 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center mb-4">
-                <value.icon className="w-7 h-7 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{value.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="bg-gradient-to-br from-blue-500 to-green-500 rounded-3xl p-12 text-white text-center">
-          <h3 className="text-3xl font-black mb-4">Join 50+ Academies Already Using Track My Academy</h3>
-          <p className="text-xl mb-8 text-white/90">
-            Start your free trial today and experience the difference
-          </p>
-          <a
-            href="#pricing"
-            className="inline-block bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:scale-105 transition-all"
+    <section className="py-32 bg-background relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px]"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            Get Started Free
-          </a>
+            <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              🚀 Modern
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+              Built for modern <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">sports academies</span>
+            </h2>
+            <p className="text-xl text-gray-400 mb-8 leading-relaxed">
+              Streamline operations, track performance, and scale your academy with our comprehensive management platform. Everything you need in one place.
+            </p>
+
+            {/* Feature Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+              {features.map((feature, index) => (
+                <div key={index} className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <feature.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white mb-1">{feature.title}</h3>
+                    <p className="text-sm text-gray-400">{feature.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            <div className="bg-card border border-white/10 rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-6">All-in-one platform</h3>
+              <p className="text-gray-400 mb-8">Everything you need to manage your sports academy effectively</p>
+              
+              <div className="space-y-4">
+                {capabilities.map((capability, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex items-center space-x-3 bg-background/50 rounded-lg p-4 border border-white/5"
+                  >
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-white font-medium">{capability}</span>
+                  </motion.div>
+                ))}
+              </div>
+
+              <button className="w-full mt-8 bg-primary text-white px-6 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all hover:scale-105">
+                Try it free
+              </button>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
