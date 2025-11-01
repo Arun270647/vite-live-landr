@@ -38,17 +38,17 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-background/95 backdrop-blur-md border-b border-border' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform">
-              <span className="text-white font-bold text-xl">T</span>
+            <div className="w-8 h-8 bg-primary rounded flex items-center justify-center transform group-hover:scale-110 transition-transform">
+              <span className="text-white font-bold text-lg">T</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">Track My Academy</span>
+            <span className="text-lg font-semibold text-foreground hidden sm:block">Track My Academy</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -57,23 +57,23 @@ const Navbar = () => {
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link.path, link.hash)}
-                className="text-gray-700 hover:text-primary font-medium transition-colors"
+                className="text-muted-foreground hover:text-foreground font-medium transition-colors text-sm"
               >
                 {link.name}
               </button>
             ))}
             <a
               href="#pricing"
-              className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-5 py-2 rounded-lg font-medium transition-all text-sm"
             >
-              Get Started
+              Sign In
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-gray-700 hover:text-primary"
+            className="md:hidden p-2 text-foreground hover:text-primary"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -82,23 +82,23 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+        <div className="md:hidden bg-card border-t border-border">
           <div className="container mx-auto px-6 py-4 space-y-4">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link.path, link.hash)}
-                className="block w-full text-left text-gray-700 hover:text-primary font-medium py-2"
+                className="block w-full text-left text-muted-foreground hover:text-foreground font-medium py-2"
               >
                 {link.name}
               </button>
             ))}
             <a
               href="#pricing"
-              className="block text-center bg-gradient-to-r from-primary to-secondary text-white px-6 py-2.5 rounded-lg font-semibold"
+              className="block text-center bg-primary hover:bg-primary/90 text-primary-foreground px-5 py-2 rounded-lg font-medium"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Get Started
+              Sign In
             </a>
           </div>
         </div>
