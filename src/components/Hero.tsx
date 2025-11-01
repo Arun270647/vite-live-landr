@@ -1,46 +1,12 @@
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ShaderBackground from './ui/shader-background';
 
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-20">
-      {/* Animated Wave Lines Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: 'hsl(263, 70%, 50%)', stopOpacity: 0.6 }} />
-              <stop offset="100%" style={{ stopColor: 'hsl(263, 70%, 60%)', stopOpacity: 0.3 }} />
-            </linearGradient>
-          </defs>
-          
-          {/* Wave Lines */}
-          {[...Array(8)].map((_, i) => (
-            <motion.path
-              key={i}
-              d={`M ${-200 + i * 150} ${200 + i * 80} Q ${400 + i * 100} ${100 + i * 60}, ${1000 + i * 120} ${300 + i * 70} T ${2000 + i * 100} ${200 + i * 60}`}
-              stroke="url(#gradient1)"
-              strokeWidth="2"
-              fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ 
-                pathLength: 1, 
-                opacity: [0.3, 0.6, 0.3],
-                y: [0, -20, 0]
-              }}
-              transition={{ 
-                pathLength: { duration: 2, delay: i * 0.2 },
-                opacity: { duration: 4, repeat: Infinity, delay: i * 0.3 },
-                y: { duration: 8, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }
-              }}
-            />
-          ))}
-        </svg>
-        
-        {/* Purple Glow Effects */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"></div>
-      </div>
+      {/* Shader Background */}
+      <ShaderBackground />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
